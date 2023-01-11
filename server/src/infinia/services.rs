@@ -5,6 +5,7 @@ use actix_web::{post, web, HttpResponse, Responder};
 async fn to_inches(param_obj: web::Json<People>) -> impl Responder {
     let mut people = param_obj.people.clone();
 
+    // Iterates through all people mutably
     people
         .iter_mut()
         .for_each(|person| person.height = conversion(person.height));
